@@ -1,6 +1,8 @@
-# default-react
+# nancify
 
-### My boilerplate using
+Financial goodies.  Loan calculator, debt payoff calculations, etc.  Will make actual list when completed.
+
+### Using
  - [Express JS](http://expressjs.com/) 4.x (eventually 5.x)
  - [React](https://facebook.github.io/react/) >= 15.1.0
  - [Redux](http://redux.js.org/)
@@ -19,10 +21,6 @@ npm install
 npm run build  # or build-dist, watch, or watch-dist
 npm start
 ```
-
-## Who this is for
-
-Me and anyone else loving React, Redux and React Router who needs a very basic boilerplate to start from but not wanting to redo the entire freaking code like most the others available.
 
 ## Credits
 

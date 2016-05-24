@@ -1,7 +1,7 @@
 {
   "name": "nancify",
   "version": "1.0.0",
-  "description": "Boilerplate app for React.",
+  "description": "Financial stuff",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
