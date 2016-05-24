@@ -9,16 +9,20 @@ import { store, history } from './data/store';
 
 import Main from './components/Main';
 import Home from './components/Home';
+import Loan from './components/Loan';
 
 const App = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={Main}>
                 <IndexRoute component={Home} />
-                <Route path="/:title" component={Home} />
+                <Route path="/loan" component={Loan} />
             </Route>
         </Router>
     </Provider>
 );
 
-render(App, document.getElementById("main"));
+render(
+    App,
+    document.getElementById("main")
+);
