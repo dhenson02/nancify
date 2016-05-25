@@ -1,58 +1,58 @@
 'use strict';
 
-const keyCodes = {
-    '9': '    ',
-    '32': ' ',
-    '48': '0',
-    '49': '1',
-    '50': '2',
-    '51': '3',
-    '52': '4',
-    '53': '5',
-    '54': '6',
-    '55': '7',
-    '56': '8',
-    '57': '9',
-    '65': 'a',
-    '66': 'b',
-    '67': 'c',
-    '68': 'd',
-    '69': 'e',
-    '70': 'f',
-    '71': 'g',
-    '72': 'h',
-    '73': 'i',
-    '74': 'j',
-    '75': 'k',
-    '76': 'l',
-    '77': 'm',
-    '78': 'n',
-    '79': 'o',
-    '80': 'p',
-    '81': 'q',
-    '82': 'r',
-    '83': 's',
-    '84': 't',
-    '85': 'u',
-    '86': 'v',
-    '87': 'w',
-    '88': 'x',
-    '89': 'y',
-    '90': 'z'
-};
+import * as constants from './constants';
 
-export const addLetter = function ( input ) {
-    const letter = typeof input === 'number' ?
-                   keyCodes[ input ] :
-                   input;
+export const loanAmount = function ( amount ) {
     return {
-        type: 'LETTER_ADDED',
-        letter
+        type: constants.LOAN_AMOUNT,
+        amount
     };
 };
 
-export const backspace = function () {
+export const loanMonthly = function ( monthly ) {
     return {
-        type: 'BACKSPACE'
+        type: constants.LOAN_MONTHLY,
+        monthly
+    };
+};
+
+export const loanAPR = function ( apr ) {
+    return {
+        type: constants.LOAN_APR,
+        apr
+    };
+};
+
+export const loanDuration = function ( duration ) {
+    return {
+        type: constants.LOAN_DURATION,
+        duration
+    };
+};
+
+export const loanStatus = function ( period, remaining, total ) {
+    return {
+        type: constants.LOAN_STATUS,
+        period: parseInt(period, 10),
+        loan: Map({
+            'remaining': parseFloat(remaining),
+            'total': parseFloat(total)
+        })
+    };
+};
+
+/*export const loanTotal = function ( total, period ) {
+    return {
+        type: constants.LOAN_TOTAL,
+        total: parseFloat(total),
+        period: parseInt(period, 10)
+    };
+};*/
+
+export const progressChange = function ( increase ) {
+    return {
+        type: increase === true ?
+              'INCREMENT_PROGRESS' :
+              'DECREMENT_PROGRESS'
     };
 };

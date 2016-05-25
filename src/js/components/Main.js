@@ -1,34 +1,28 @@
 'use strict';
 
 import React from 'react';
+import { PureComponent } from 'react-pure-render';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 
-import Title from './Title';
-
-class Main extends React.Component {
+class Main extends PureComponent {
     constructor ( props ) {
         super(props);
     }
 
-    shouldComponentUpdate ( nextProps ) {
-        return nextProps.title !== this.props.title;
-    }
-
     render () {
         return (
-            <div style={{ maxWidth: '960px', margin: '50px auto' }}>
+            <row around style={{ maxWidth: '960px', margin: '50px auto' }}>
                 {this.props.children ?
                  React.cloneElement(this.props.children, this.props) :
                  null}
-                <Title title={this.props.title}/>
-            </div>
+            </row>
         );
     }
 }
 
-const mapStateToProps = state => ({ ...state });
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+const mapStateToProps = state => ({ data: { ...state }});
+const mapDispatchToProps = dispatch => ({ dispatch: bindActionCreators(actions, dispatch) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
