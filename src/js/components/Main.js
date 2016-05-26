@@ -1,12 +1,11 @@
 'use strict';
 
 import React from 'react';
-import { PureComponent } from 'react-pure-render';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 
-class Main extends PureComponent {
+class Main extends React.Component {
     constructor ( props ) {
         super(props);
     }

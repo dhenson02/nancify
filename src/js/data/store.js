@@ -14,19 +14,14 @@ const enhancers = compose(
 );
 
 const defaults = {
-    settings: Map().set({
-        amount: 0.00,
-        monthly: 0.00,
-        apr: 0.00,
-        duration: 0
-    }),
-    status: List([
+    loan: List([
         Map({
-            remaining: 0.00,
-            total: 0.00
+            amount: 0.00,
+            monthly: 0.00,
+            apr: 0.00,
+            duration: 0
         })
     ]),
-    // total: Map().set(0, List([ 0 ])),
     progress: 0
 };
 

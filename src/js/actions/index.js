@@ -29,7 +29,7 @@ export const loanDuration = function ( duration ) {
         duration
     };
 };
-
+/*
 export const loanStatus = function ( period, remaining, total ) {
     return {
         type: constants.LOAN_STATUS,
@@ -39,7 +39,7 @@ export const loanStatus = function ( period, remaining, total ) {
             'total': parseFloat(total)
         })
     };
-};
+};*/
 
 /*export const loanTotal = function ( total, period ) {
     return {

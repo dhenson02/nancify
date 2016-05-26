@@ -3,6 +3,7 @@
 import React from 'react';
 import { PureComponent } from 'react-pure-render';
 import { regFloat } from '../actions/constants';
+import * as helpers from '../data/helpers';
 
 class Loan extends React.Component {
     constructor ( props ) {
@@ -11,9 +12,7 @@ class Loan extends React.Component {
 
     render () {
         const {
-            settings,
-            status,
-            // total,
+            loan,
             progress } = this.props.data;
         const {
             loanAmount,
@@ -21,6 +20,10 @@ class Loan extends React.Component {
             loanAPR,
             loanDuration
         } = this.props.dispatch;
+        const currentLoan = loan.get(progress);
+
+        const status = helpers.getStatus(currentLoan);
+        console.log(currentLoan, progress, status);
         return (
             <row around>
                 <column cols="4">
@@ -28,7 +31,7 @@ class Loan extends React.Component {
 
                         <InputWrapper label="Initial"
                                       description="Enter starting amount in $USD">
-                            <InitialAmount change={amount => loanAmount(amount)}/>
+                            <InitialAmount change={loanAmount}/>
                         </InputWrapper>
 
                         <InputWrapper label="Payment"
@@ -49,17 +52,21 @@ class Loan extends React.Component {
                     </form>
                 </column>
                 <column cols="5">
-                    <Total total={status.get(progress).get('total')} />
-                    <Remaining remaining={status.get(progress).get('remaining')} />
+                    <Total total={status.get('total')} />
+                    <Remaining remaining={status.get('remaining')} />
                 </column>
             </row>
         );
     }
 }
 
-class InputWrapper extends PureComponent {
+class InputWrapper extends React.Component {
     constructor ( props ) {
         super(props);
+    }
+
+    shouldComponentUpdate () {
+        return false;
     }
 
     render () {
@@ -95,7 +102,7 @@ class InitialAmount extends PureComponent {
     }
 
     handleKeyDown ( e ) {
-        const code = e.which || e.keyCode || e.charCode;
+        /*const code = e.which || e.keyCode || e.charCode;
         if ( // Use constants.codes to do a quick lookup pass/fail instead of this
         !( code > 45 || code < 58 ) && !( code > 95 || code < 106 ) && !( code > 34 && code < 38 ) &&
         code !== 110 &&
@@ -105,7 +112,7 @@ class InitialAmount extends PureComponent {
         code !== 39
         ) {
             e.preventDefault();
-        }
+        }*/
     }
 
     render () {
@@ -140,7 +147,7 @@ class Monthly extends PureComponent {
     }
 
     handleKeyDown ( e ) {
-        const code = e.which || e.keyCode || e.charCode;
+        /*const code = e.which || e.keyCode || e.charCode;
         if ( // Use constants.codes to do a quick lookup pass/fail instead of this
         !( code > 45 || code < 58 ) && !( code > 95 || code < 106 ) && !( code > 34 && code < 38 ) &&
         code !== 110 &&
@@ -150,7 +157,7 @@ class Monthly extends PureComponent {
         code !== 39
         ) {
             e.preventDefault();
-        }
+        }*/
     }
 
     /*
@@ -192,7 +199,7 @@ class APR extends PureComponent {
     }
 
     handleKeyDown ( e ) {
-        const code = e.which || e.keyCode || e.charCode;
+        /*const code = e.which || e.keyCode || e.charCode;
         if ( // Use constants.codes to do a quick lookup pass/fail instead of this
             !( code > 45 || code < 58 ) &&
             !( code > 95 || code < 106 ) &&
@@ -204,7 +211,7 @@ class APR extends PureComponent {
             code !== 39
         ) {
             e.preventDefault();
-        }
+        }*/
     }
 /*
     handleKeyUp ( e ) {
@@ -236,7 +243,7 @@ class Duration extends PureComponent {
     }
 
     handleKeyDown ( e ) {
-        const code = e.which || e.keyCode || e.charCode;
+        /*const code = e.which || e.keyCode || e.charCode;
         if ( // Use constants.codes to do a quick lookup pass/fail instead of this
         !( code > 45 || code < 58 ) && !( code > 95 || code < 106 ) && !( code > 34 && code < 38 ) &&
         code !== 110 &&
@@ -246,7 +253,7 @@ class Duration extends PureComponent {
         code !== 39
         ) {
             e.preventDefault();
-        }
+        }*/
     }
 
     render () {
